@@ -9,38 +9,65 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as FormulariosHtmlDotzipRouteImport } from './routes/formularios-html[.]zip'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FormulariosFileRouteImport } from './routes/formularios.$file'
 
+const FormulariosHtmlDotzipRoute = FormulariosHtmlDotzipRouteImport.update({
+  id: '/formularios-html.zip',
+  path: '/formularios-html.zip',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FormulariosFileRoute = FormulariosFileRouteImport.update({
+  id: '/formularios/$file',
+  path: '/formularios/$file',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/formularios-html.zip': typeof FormulariosHtmlDotzipRoute
+  '/formularios/$file': typeof FormulariosFileRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/formularios-html.zip': typeof FormulariosHtmlDotzipRoute
+  '/formularios/$file': typeof FormulariosFileRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/formularios-html.zip': typeof FormulariosHtmlDotzipRoute
+  '/formularios/$file': typeof FormulariosFileRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/formularios-html.zip' | '/formularios/$file'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/formularios-html.zip' | '/formularios/$file'
+  id: '__root__' | '/' | '/formularios-html.zip' | '/formularios/$file'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FormulariosHtmlDotzipRoute: typeof FormulariosHtmlDotzipRoute
+  FormulariosFileRoute: typeof FormulariosFileRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/formularios-html.zip': {
+      id: '/formularios-html.zip'
+      path: '/formularios-html.zip'
+      fullPath: '/formularios-html.zip'
+      preLoaderRoute: typeof FormulariosHtmlDotzipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/formularios/$file': {
+      id: '/formularios/$file'
+      path: '/formularios/$file'
+      fullPath: '/formularios/$file'
+      preLoaderRoute: typeof FormulariosFileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FormulariosHtmlDotzipRoute: FormulariosHtmlDotzipRoute,
+  FormulariosFileRoute: FormulariosFileRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
