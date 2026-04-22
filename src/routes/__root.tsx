@@ -29,14 +29,18 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "FormIHCfromCEUB" },
+      { name: "description", content: "Builds accessible and functional HTML forms with user-friendly design and accessibility best practices." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "FormIHCfromCEUB" },
+      { property: "og:description", content: "Builds accessible and functional HTML forms with user-friendly design and accessibility best practices." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "FormIHCfromCEUB" },
+      { name: "twitter:description", content: "Builds accessible and functional HTML forms with user-friendly design and accessibility best practices." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/bc9c9eb6-1ba1-44f5-ba79-479256611a3c/id-preview-c16417ac--2f1ca150-6165-41ad-927c-bf09aaaa25bc.lovable.app-1776883241038.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/bc9c9eb6-1ba1-44f5-ba79-479256611a3c/id-preview-c16417ac--2f1ca150-6165-41ad-927c-bf09aaaa25bc.lovable.app-1776883241038.png" },
     ],
     links: [
       {
