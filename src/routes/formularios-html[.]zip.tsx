@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import zipB64 from "../static/formularios-html.zip.b64?raw";
+import { zipB64 } from "../static/formularios-html-zip-b64";
 
 function base64ToBytes(b64: string): Uint8Array {
   const clean = b64.replace(/\s+/g, "");
