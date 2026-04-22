@@ -14,7 +14,11 @@ export const Route = createFileRoute("/formularios-html.zip")({
     handlers: {
       GET: () => {
         const bytes = base64ToBytes(zipB64);
-        return new Response(bytes, {
+        const body = bytes.buffer.slice(
+          bytes.byteOffset,
+          bytes.byteOffset + bytes.byteLength,
+        ) as ArrayBuffer;
+        return new Response(body, {
           status: 200,
           headers: {
             "Content-Type": "application/zip",
